@@ -1,11 +1,17 @@
-<template>
-  <section class="container">
-    <div/>
-  </section>
+<template lang="pug">
+div
+  section.container
+    card(v-for="i in 5" :key="i")
 </template>
 
 <script>
-export default {}
+import Card from '../components/card'
+
+export default {
+  components: {
+    Card
+  }
+}
 </script>
 
 <style>
