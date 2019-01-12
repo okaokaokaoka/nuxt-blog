@@ -1,8 +1,29 @@
-<template lang="pug">
-div
-  article.card
-    nuxt-link.wrapper(:to="{ name: 'blog-slug'}")
-      h1.card_title 記事１
-      p.card_text 記事の内容。hogehogehogehogehoge
-      p.card_date 2018/8/2
+<template>
+  <nuxt-link
+    :to="{ name: 'blog-slug', params: { slug: id　}}"
+    class="wrapper"
+  >
+    <article class="card">
+      <h1 class="card_title">{{ title }}</h1>
+      <p class="card_date">{{ date }}</p>
+    </article>
+  </nuxt-link>
 </template>
+<script>
+export default {
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    id: {
+      type: String,
+      default: ''
+    },
+    date: {
+      type: String,
+      default: ''
+    }
+  }
+}
+</script>
