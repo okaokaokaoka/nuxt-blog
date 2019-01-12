@@ -1,6 +1,52 @@
-<template lang="pug">
-div
-  section.slug
-    h1.slug-title タイトル
-    p.slug-date 2018/08/02
+<template>
+  <section class="slug">
+    <h1 class="slug_title">
+      {{ article.fields.title }}
+    </h1>
+    <p class="slug_date">{{ article.sys.updatedAt }}</p>
+    <div>
+      {{ article.fields.body.content[0].content[0].value }}
+    </div>
+  </section>
 </template>
+<script>
+import { createClient } from '~/plugins/contentful.js'
+
+const client = createClient()
+export default {
+  props: {
+    id: {
+      type: String,
+      default: ''
+    }
+  },
+  transition: 'slide-right',
+  async asyncData({ env, params }) {
+    return await client
+      .getEntry(params.sys)
+      .then(entrie => {
+        return {
+          article: entrie
+        }
+      })
+      .catch(console.error)
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.slide-left-enter {
+  transform: translateX(2000px);
+  opacity: 0;
+}
+.slide-left-enter-active {
+  transition: all 0.3s linear;
+}
+.slide-left-leave-to {
+  transform: translateX(-2000px);
+  opacity: 0;
+}
+.slide-left-leave-active {
+  transition: all 0.3s linear;
+}
+</style>

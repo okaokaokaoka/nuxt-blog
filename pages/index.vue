@@ -1,25 +1,31 @@
 <template lang="pug">
 div
   section.container
-    card(v-for="i in 5" :key="i")
+    card(v-for="(post,i) in posts"
+    :key="i" :title="post.fields.title"
+    :id="post.sys.id"
+    :date="post.sys.updatedAt")
 </template>
 
 <script>
-import Card from '../components/card'
+import { createClient } from '~/plugins/contentful.js'
+import Card from '~/components/card'
+
+const client = createClient()
 
 export default {
   components: {
     Card
+  },
+  asyncData({ env, params }) {
+    return client
+      .getEntries(env.CTF_BLOG_POST_TYPE_ID)
+      .then(entries => {
+        return {
+          posts: entries.items
+        }
+      })
+      .catch(console.error)
   }
 }
 </script>
-
-<style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-</style>
