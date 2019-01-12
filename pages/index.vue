@@ -2,7 +2,8 @@
 div
   section.container
     card(v-for="(post,i) in posts"
-    :key="i" :title="post.fields.title"
+    :key="i"
+    :title="post.fields.title"
     :id="post.sys.id"
     :date="post.sys.updatedAt")
 </template>
