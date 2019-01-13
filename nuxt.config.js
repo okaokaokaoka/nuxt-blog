@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const config = require('./.contentful.json')
 
 module.exports = {
   mode: 'universal',
@@ -7,17 +8,45 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'toruokada.tokyo',
+    titleTemplate: '%s | toruokada.tokyo',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: 'Toru Okadaのブログ' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href:
+          'https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic'
+      },
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href:
+          'https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css'
+      },
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href:
+          'https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css'
+      }
     ]
   },
 
+  /*
+  ** ENV
+  */
+  env: {
+    CTF_SPACE_ID: config.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
+    CTF_PERSON_ID: config.CTF_PERSON_ID,
+    CTF_BLOG_POST_TYPE_ID: config.CTF_BLOG_POST_TYPE_ID
+  },
   /*
   ** Customize the progress-bar color
   */
@@ -27,13 +56,14 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    { src: '~assets/app.scss', lang: 'scss' },
+    { src: '~assets/trasition.scss', lang: 'scss' }
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-  ],
+  plugins: [],
 
   /*
   ** Nuxt.js modules
