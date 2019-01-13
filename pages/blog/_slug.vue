@@ -1,18 +1,24 @@
 <template lang="pug">
-  section.slug
-    h1.slug-title {{ article.fields.title }}
-    p.slug-date {{ article.sys.updatedAt }}
-    vue-markdown {{ article.fields.body }}
+div.article-container
+  nuxt-link.back-to-root-button(to="/") ../
+  p.article-date {{ createdAt }}
+  h1.article-title {{ article.fields.title }}
+  div.article-body-container
+    vue-markdown.article-body {{ article.fields.body }}
+  author-info
 </template>
 
 <script>
 import { createClient } from '~/plugins/contentful.js'
 import VueMarkdown from 'vue-markdown'
+import moment from 'moment'
+import AuthorInfo from '../../components/AuthorInfo'
 
 const client = createClient()
 export default {
   components: {
-    VueMarkdown
+    VueMarkdown,
+    AuthorInfo
   },
   props: {
     id: {
@@ -20,7 +26,6 @@ export default {
       default: ''
     }
   },
-  transition: 'slide-left',
   async asyncData({ env, params }) {
     return await client
       .getEntry(params.slug)
@@ -30,22 +35,49 @@ export default {
         }
       })
       .catch(console.error)
+  },
+  computed: {
+    createdAt() {
+      return moment(new Date(this.article.sys.createdAt)).format('YYYY/MM/DD')
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.slug {
+.article-container {
   max-width: 800px;
   margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  .back-to-root-button {
+    font-size: 20px;
+  }
+  .article-date {
+    font-size: 1.6rem;
+    color: rgb(57, 72, 85);
+    text-align: left;
+    margin-bottom: 5px;
+  }
+  .article-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #9a4dc9;
+  }
+  .article-body-container {
+    .article-body {
+      margin-top: 50px;
+    }
+  }
 }
-.slug_title {
-  font-size: 2rem;
-  font-weight: bolder;
-}
-.slug_date {
-  font-size: 1rem;
-  color: rgb(57, 72, 85);
-  text-align: right;
+
+@media screen and (max-width: 768px) {
+  .article-container {
+    .article-title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #9a4dc9;
+    }
+  }
 }
 </style>

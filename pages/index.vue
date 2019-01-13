@@ -10,7 +10,7 @@ div
 
 <script>
 import { createClient } from '~/plugins/contentful.js'
-import Card from '~/components/card'
+import Card from '~/components/Card'
 
 const client = createClient()
 
@@ -30,3 +30,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.container {
+  margin-top: 50px;
+  max-width: 800px;
+}
+</style>

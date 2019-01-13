@@ -1,34 +1,25 @@
-<template>
-  <div>
-    <nuxt/>
-  </div>
+<template lang="pug">
+div.app-container
+  Header
+  nuxt
 </template>
 
-<style lang="scss">
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+<script>
+import Header from '../components/Header'
 
-.slide-left-enter {
-  transform: translateX(2000px);
-  opacity: 0;
+export default {
+  components: {
+    Header
+  }
 }
-.slide-left-enter-active {
-  transition: all 0.3s linear;
-}
-.slide-left-leave-to {
-  transform: translateX(-2000px);
-  opacity: 0;
-}
-.slide-left-leave-active {
-  transition: all 0.3s linear;
+</script>
+
+
+<style lang="scss">
+.app-container {
+  max-width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px;
 }
 </style>
