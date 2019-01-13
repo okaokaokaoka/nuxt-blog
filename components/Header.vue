@@ -6,7 +6,6 @@ div
         vue-typer(text="toruokada.tokyo" :repeat='0')
     div.site-description
       p okachanのブログ
-
 </template>
 
 <script>
