@@ -1,20 +1,11 @@
-const pkg = require('./package')
-const config = require('./.contentful.json')
-import contentful from 'contentful'
-const contentfulClient = contentful.createClient({
-  space: config.CTF_SPACE_ID,
-  accessToken: config.CTF_CDA_ACCESS_TOKEN
-})
-const getRoutes = () => {
-  return contentfulClient
-    .getEntries({
-      content_type: 'post',
-      select: 'fields.slug'
-    })
-    .then(({ items }) => {
-      return items.map(post => `/${post.fields.slug}`)
-    })
-}
+const { getConfigForKeys } = require('./lib/config.js')
+const ctfConfig = getConfigForKeys([
+  'CTF_BLOG_POST_TYPE_ID',
+  'CTF_SPACE_ID',
+  'CTF_CDA_ACCESS_TOKEN'
+])
+const { createClient } = require('./plugins/contentful.js')
+const cdaClient = createClient(ctfConfig)
 
 module.exports = {
   mode: 'universal',
@@ -52,7 +43,6 @@ module.exports = {
       }
     ]
   },
-
   /*
   ** ENV
   */
@@ -117,7 +107,17 @@ module.exports = {
   ** Generate configuration
   */
   generate: {
-    fallback: '404.html',
-    routes: getRoutes
+    routes() {
+      return cdaClient
+        .getEntries(ctfConfig.CTF_BLOG_POST_TYPE_ID)
+        .then(entries => {
+          return [...entries.items.map(entry => `/blog/${entry.fields.slug}`)]
+        })
+    }
+  },
+  env: {
+    CTF_SPACE_ID: ctfConfig.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: ctfConfig.CTF_CDA_ACCESS_TOKEN,
+    CTF_BLOG_POST_TYPE_ID: ctfConfig.CTF_BLOG_POST_TYPE_ID
   }
 }

@@ -1,6 +1,6 @@
 <template lang="pug">
 div.article-container
-  nuxt-link.back-to-root-button(to="/") ../
+  nuxt-link.back-to-root-button(to="/") 👈
   p.article-date {{ createdAt }}
   h1.article-title {{ article.fields.title }}
   div.article-body-container
