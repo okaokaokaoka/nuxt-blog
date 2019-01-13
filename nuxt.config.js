@@ -14,10 +14,32 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href:
+          'https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic'
+      },
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href:
+          'https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css'
+      },
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href:
+          'https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css'
+      }
+    ]
   },
 
-  // ENV
+  /*
+  ** ENV
+  */
   env: {
     CTF_SPACE_ID: config.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
@@ -32,7 +54,7 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [],
+  css: [{ src: '~assets/app.scss', lang: 'scss' }],
 
   /*
   ** Plugins to load before mounting the App
