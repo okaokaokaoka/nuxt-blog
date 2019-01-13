@@ -19,8 +19,8 @@ export default {
   components: {
     Card
   },
-  asyncData({ env, params }) {
-    return client
+  async asyncData({ env, params }) {
+    return await client
       .getEntries({
         // content_type: env.CTF_BLOG_POST_TYPE_ID,
         order: '-sys.createdAt'

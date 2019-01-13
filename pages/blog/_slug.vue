@@ -5,6 +5,7 @@ div.article-container
   h1.article-title {{ article.fields.title }}
   div.article-body-container
     vue-markdown.article-body {{ article.fields.body }}
+    span.article-category # {{ article.fields.category }}
   author-info
 </template>
 
@@ -93,6 +94,18 @@ export default {
     .article-body {
       margin-top: 50px;
     }
+  }
+  .article-category {
+    background-color: #606c76;
+    border: 0.1rem solid #606c76;
+    border-radius: 0.4rem;
+    color: #ffffff;
+    display: inline-block;
+    padding: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 1px;
+    margin-left: 4px;
   }
 }
 
