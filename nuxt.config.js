@@ -53,7 +53,7 @@ module.exports = {
   */
   css: [
     { src: '~assets/app.scss', lang: 'scss' },
-    { src: '~assets/trasition.scss', lang: 'scss' }
+    { src: '~assets/transition.scss', lang: 'scss' }
   ],
 
   /*
