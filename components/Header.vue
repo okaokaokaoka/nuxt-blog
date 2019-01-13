@@ -2,11 +2,24 @@
 div
   header
     div.site-title
-      nuxt-link.site-title__link(to="/") toruokada.tokyo
+      nuxt-link.site-title__link(to="/")
+        vue-typer(text="toruokada.tokyo" :repeat='0')
     div.site-description
       p okachanによるブログ
 
 </template>
+
+<script>
+if (process.browser) {
+  var VueTyper = require('vue-typer').VueTyper
+}
+export default {
+  components: {
+    VueTyper
+  }
+}
+</script>
+
 
 <style lang="scss" scoped>
 .site-title {

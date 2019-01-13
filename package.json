@@ -20,7 +20,8 @@
     "milligram": "^1.3.0",
     "moment": "^2.23.0",
     "nuxt": "^2.0.0",
-    "vue-markdown": "^2.2.4"
+    "vue-markdown": "^2.2.4",
+    "vue-typer": "^1.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
