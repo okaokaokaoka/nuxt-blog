@@ -83,3 +83,5 @@ dist
 # ENV
 .env
 .contentful.json
+
+.firebase

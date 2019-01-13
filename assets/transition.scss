@@ -1,9 +1,9 @@
-.test-enter-active,
-.test-leave-active {
+.fade-in-enter-active,
+.fade-in-leave-active {
   transition: opacity .1s;
 }
 
-.test-enter,
-.test-leave-active {
+.fade-in-enter,
+.fade-in-leave-active {
   opacity: 0;
 }

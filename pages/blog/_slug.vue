@@ -22,15 +22,15 @@ export default {
     VueMarkdown,
     AuthorInfo
   },
-  transition: 'test',
+  transition: 'fade-in',
   props: {
     id: {
       type: String,
       default: ''
     }
   },
-  async asyncData({ env, params }) {
-    return await client
+  asyncData({ env, params }) {
+    return client
       .getEntry(params.id)
       .then(entrie => {
         return {
