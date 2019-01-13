@@ -5,7 +5,8 @@ div
     :key="i"
     :title="post.fields.title"
     :id="post.sys.id"
-    :date="post.sys.updatedAt")
+    :slug="post.fields.slug"
+    :date="post.sys.createdAt")
 </template>
 
 <script>
@@ -27,6 +28,11 @@ export default {
         }
       })
       .catch(console.error)
+  },
+  head() {
+    return {
+      titleTemplate: null
+    }
   }
 }
 </script>
@@ -40,6 +46,8 @@ export default {
 @media screen and (max-width: 768px) {
   .container {
     margin-top: 40px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
 }
 </style>
