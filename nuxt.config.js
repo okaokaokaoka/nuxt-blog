@@ -1,5 +1,20 @@
 const pkg = require('./package')
 const config = require('./.contentful.json')
+import contentful from 'contentful'
+const contentfulClient = contentful.createClient({
+  space: config.CTF_SPACE_ID,
+  accessToken: config.CTF_CDA_ACCESS_TOKEN
+})
+const getRoutes = () => {
+  return contentfulClient
+    .getEntries({
+      content_type: 'post',
+      select: 'fields.slug'
+    })
+    .then(({ items }) => {
+      return items.map(post => `/${post.fields.slug}`)
+    })
+}
 
 module.exports = {
   mode: 'universal',
@@ -97,5 +112,12 @@ module.exports = {
         })
       }
     }
+  },
+  /*
+  ** Generate configuration
+  */
+  generate: {
+    fallback: '404.html',
+    routes: getRoutes
   }
 }
