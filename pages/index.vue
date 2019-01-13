@@ -36,4 +36,10 @@ export default {
   margin-top: 50px;
   max-width: 800px;
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    margin-top: 40px;
+  }
+}
 </style>
