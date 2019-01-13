@@ -11,6 +11,8 @@ div.article-container
 <script>
 import { createClient } from '~/plugins/contentful.js'
 import VueMarkdown from 'vue-markdown'
+import clipStr from '~/utils/clip-str'
+import h2p from 'html2plaintext'
 import moment from 'moment'
 import AuthorInfo from '../../components/AuthorInfo'
 
@@ -20,6 +22,7 @@ export default {
     VueMarkdown,
     AuthorInfo
   },
+  transition: 'test',
   props: {
     id: {
       type: String,
@@ -28,7 +31,7 @@ export default {
   },
   async asyncData({ env, params }) {
     return await client
-      .getEntry(params.slug)
+      .getEntry(params.id)
       .then(entrie => {
         return {
           article: entrie
@@ -39,6 +42,28 @@ export default {
   computed: {
     createdAt() {
       return moment(new Date(this.article.sys.createdAt)).format('YYYY/MM/DD')
+    }
+  },
+  head() {
+    const description = clipStr(
+      h2p(this.article.fields.body).replace(/\r?\n/g, ''),
+      400
+    )
+    return {
+      title: this.article.fields.title,
+      meta: [
+        { hid: 'description', name: 'description', content: description },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.article.fields.title
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: description
+        }
+      ]
     }
   }
 }

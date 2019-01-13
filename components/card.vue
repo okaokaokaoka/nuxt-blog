@@ -1,9 +1,8 @@
 <template lang="pug">
 div
   article.card-wrapper
-    nuxt-link.text-grey(:to="{ name: 'blog-slug', params: { slug: id　}}")
+    nuxt-link.text-grey(:to="{ name: 'blog-slug', params: { slug: slug, id: id }}")
       p.card-title {{ title }}
-      //- TODO: dateの加工が必要
       p.card-date {{ createdAt }}
 </template>
 
@@ -21,6 +20,10 @@ export default {
       default: ''
     },
     date: {
+      type: String,
+      default: ''
+    },
+    slug: {
       type: String,
       default: ''
     }

@@ -8,11 +8,12 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'toruokada.tokyo',
+    titleTemplate: '%s | toruokada.tokyo',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: 'Toru Okadaのブログ' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -54,7 +55,10 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [{ src: '~assets/app.scss', lang: 'scss' }],
+  css: [
+    { src: '~assets/app.scss', lang: 'scss' },
+    { src: '~assets/trasition.scss', lang: 'scss' }
+  ],
 
   /*
   ** Plugins to load before mounting the App
