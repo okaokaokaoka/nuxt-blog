@@ -5,7 +5,7 @@ div
       nuxt-link.site-title__link(to="/")
         vue-typer(text="toruokada.tokyo" :repeat='0')
     div.site-description
-      p 日常の記録やプログラミングについて
+      p 徒然なるままに
 </template>
 
 <script>
