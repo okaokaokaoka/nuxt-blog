@@ -101,11 +101,11 @@ export default {
     border-radius: 0.4rem;
     color: #ffffff;
     display: inline-block;
-    padding: 0.3rem;
-    font-size: 0.8rem;
-    font-weight: bold;
+    padding: 0.2rem 0.3rem;
+    font-size: 1.2rem;
+    // font-weight: bold;
     margin-bottom: 1px;
-    margin-left: 4px;
+    // margin-left: 4px;
   }
 }
 

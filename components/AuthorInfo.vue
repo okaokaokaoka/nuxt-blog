@@ -10,6 +10,8 @@ div.author-info-container
     br
     span - Facebook: 
     a(href="https://www.facebook.com/okaokaokatoru")  Toru Okada
+  div.about-link
+    nuxt-link(to="/about") More detail...
 </template>
 
 <script>
@@ -29,6 +31,9 @@ export default {
   border: 1px solid #ccc;
   .author-name {
     margin-bottom: 5px;
+  }
+  .about-link {
+    margin-top: 2rem;
   }
 }
 </style>
