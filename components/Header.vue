@@ -22,7 +22,7 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  margin: 10px 0;
+  margin-top: 20px;
   .site-title {
     font-size: 3rem;
     line-height: 1.3;

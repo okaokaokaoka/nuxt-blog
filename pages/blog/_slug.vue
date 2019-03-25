@@ -108,4 +108,14 @@ export default {
     margin-bottom: 1px;
   }
 }
+@media screen and (min-width: 768px) {
+  .article-container {
+    .article-title {
+      font-size: 2.2rem;
+    }
+    .article-date {
+      font-size: 1.6rem;
+    }
+  }
+}
 </style>

@@ -17,7 +17,7 @@ export default {
 
 <style lang="scss">
 .app-container {
-  max-width: 1000px;
+  max-width: 800px;
   margin-right: auto;
   margin-left: auto;
   padding: 20px;
