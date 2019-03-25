@@ -5,7 +5,7 @@ div
       nuxt-link.site-title__link(to="/")
         vue-typer(text="toruokada.tokyo" :repeat='0')
     div.site-description
-      p 徒然なるままに
+      p 岡田徹のブログ
 </template>
 
 <script>
@@ -21,23 +21,26 @@ export default {
 
 
 <style lang="scss" scoped>
-.site-title {
-  font-size: 3.2rem;
-  line-height: 1.3;
-  font-weight: bold;
-  text-align: center;
-  &__link {
-    text-decoration: none;
-    color: inherit;
-    opacity: 1;
-    &:hover {
-      opacity: 0.9;
+header {
+  margin: 10px 0;
+  .site-title {
+    font-size: 3rem;
+    line-height: 1.3;
+    font-weight: bold;
+    text-align: center;
+    &__link {
+      text-decoration: none;
+      color: inherit;
+      opacity: 1;
+      &:hover {
+        opacity: 0.9;
+      }
     }
   }
-}
-.site-description p {
-  font-size: 1.8rem;
-  margin-top: 5px;
-  text-align: center;
+  .site-description p {
+    font-size: 1.8rem;
+    margin-top: 5px;
+    text-align: center;
+  }
 }
 </style>

@@ -39,19 +39,12 @@ export default {
 <style lang="scss" scoped>
 .card-wrapper {
   .card-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 1px;
   }
-}
-
-@media screen and (max-width: 768px) {
-  .card-wrapper {
-    .card-title {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 1px;
-    }
+  .card-date {
+    font-size: 1.4rem;
   }
 }
 </style>
