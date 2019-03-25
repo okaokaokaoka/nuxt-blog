@@ -1,8 +1,8 @@
 <template lang="pug">
 div.article-container
-  nuxt-link.back-to-root-button(to="/") 👈
-  p.article-date {{ createdAt }}
+  //- nuxt-link.back-to-root-button(to="/") 👈
   h1.article-title {{ article.fields.title }}
+  p.article-date {{ createdAt }}
   div.article-body-container
     vue-markdown.article-body {{ article.fields.body }}
     span.article-category # {{ article.fields.category }}
@@ -23,7 +23,6 @@ export default {
     VueMarkdown,
     AuthorInfo
   },
-  transition: 'fade-in',
   props: {
     id: {
       type: String,
@@ -74,47 +73,48 @@ export default {
 .article-container {
   max-width: 800px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 60px;
   margin-bottom: 50px;
   .back-to-root-button {
     font-size: 20px;
   }
   .article-date {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: rgb(57, 72, 85);
     text-align: left;
     margin-bottom: 5px;
   }
   .article-title {
-    font-size: 3rem;
+    font-size: 1.8rem;
     font-weight: bold;
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
     color: #9a4dc9;
   }
   .article-body-container {
     .article-body {
-      margin-top: 50px;
+      margin-top: 40px;
+      line-height: 1.8;
     }
   }
   .article-category {
     background-color: #606c76;
     border: 0.1rem solid #606c76;
-    border-radius: 0.4rem;
+    border-radius: 0.2rem;
     color: #ffffff;
     display: inline-block;
-    padding: 0.2rem 0.3rem;
+    padding: 0.1rem 0.4rem;
     font-size: 1.2rem;
-    // font-weight: bold;
     margin-bottom: 1px;
-    // margin-left: 4px;
   }
 }
-
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   .article-container {
     .article-title {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #9a4dc9;
+      font-size: 2.2rem;
+    }
+    .article-date {
+      font-size: 1.6rem;
     }
   }
 }
